@@ -1,0 +1,19 @@
+{
+  "name": "pet-ceremony-familia-lp",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/check": "latest",
+    "astro": "latest",
+    "gsap": "latest",
+    "sass": "latest",
+    "typescript": "latest"
+  }
+}

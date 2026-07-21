@@ -1,0 +1,56 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/images/logo.png';
+import Icon from './Icon.astro';
+
+const navItems = [
+  { href: '#promise', label: '私たちの想い' },
+  { href: '#plans', label: '火葬プラン' },
+  { href: '#flow', label: 'お見送りの流れ' },
+  { href: '#faq', label: 'よくあるご質問' },
+];
+---
+
+<header class="header" data-header>
+  <div class="header__inner">
+    <a class="header__logo-link" href="#top" aria-label="ページ上部へ">
+      <Image class="header__logo" src={logo} alt="ペットセレモニーファミリア" width={280} loading="eager" />
+    </a>
+
+    <nav class="header__nav" aria-label="メインメニュー">
+      {navItems.map((item) => <a class="header__nav-link" href={item.href}>{item.label}</a>)}
+    </nav>
+
+    <a class="header__phone" href="tel:0427034986">
+      <Icon name="phone" class="header__phone-icon" />
+      <span class="header__phone-copy">
+        <span class="header__phone-note">24時間365日受付</span>
+        <span class="header__phone-number">042-703-4986</span>
+      </span>
+    </a>
+
+    <button class="menu-button" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu" data-menu-button>
+      <span class="menu-button__line"></span>
+      <span class="menu-button__line"></span>
+      <span class="menu-button__line"></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true" data-mobile-menu>
+    <nav class="mobile-menu__nav" aria-label="モバイルメニュー">
+      {navItems.map((item, index) => (
+        <a class="mobile-menu__link" href={item.href} data-menu-link>
+          <span class="mobile-menu__index">0{index + 1}</span>
+          <span class="mobile-menu__label">{item.label}</span>
+        </a>
+      ))}
+    </nav>
+    <div class="mobile-menu__contact">
+      <p class="mobile-menu__note">ご相談・ご予約は24時間365日受付</p>
+      <a class="mobile-menu__phone" href="tel:0427034986">042-703-4986</a>
+      <a class="button mobile-menu__line-link" href="https://line.me/R/ti/p/@971qlchl?ts=09091308&oat_content=url" target="_blank" rel="noopener noreferrer">
+        <Icon name="line" class="button__icon" />LINEで相談する
+      </a>
+    </div>
+  </div>
+</header>

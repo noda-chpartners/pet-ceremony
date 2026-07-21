@@ -1,0 +1,62 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/images/logo.png';
+import Icon from './Icon.astro';
+
+const youtubeUrl = 'https://www.youtube.com/@%E3%83%9A%E3%83%83%E3%83%88%E3%82%BB%E3%83%AC%E3%83%A2%E3%83%8B%E3%83%BC%E3%83%95%E3%82%A1%E3%83%9F%E3%83%AA%E3%82%A2';
+---
+
+<footer class="footer">
+  <div class="container footer__main">
+    <div class="footer__brand">
+      <a class="footer__logo-link" href="#top" aria-label="ページ上部へ">
+        <Image class="footer__logo" src={logo} alt="ペットセレモニーファミリア" width={300} />
+      </a>
+      <p class="footer__tagline">大切な家族とのお別れを、<br />心を込めてお手伝いいたします。</p>
+      <div class="footer__socials" aria-label="公式SNS">
+        <a class="footer__social" href="https://www.instagram.com/pet_ceremony_familia/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <Icon name="instagram" class="footer__social-icon" />
+        </a>
+        <a class="footer__social" href={youtubeUrl} target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <Icon name="youtube" class="footer__social-icon" />
+        </a>
+        <a class="footer__social footer__social--line" href="https://line.me/R/ti/p/@971qlchl?ts=09091308&oat_content=url" target="_blank" rel="noopener noreferrer" aria-label="LINE">
+          <Icon name="line" class="footer__social-icon" />
+        </a>
+      </div>
+    </div>
+
+    <div class="footer__information">
+      <h2 class="footer__heading">店舗情報</h2>
+      <dl class="footer__details">
+        <div class="footer__detail"><dt class="footer__term">名称</dt><dd class="footer__description">ペットセレモニーファミリア</dd></div>
+        <div class="footer__detail"><dt class="footer__term">業種</dt><dd class="footer__description">訪問ペット火葬・葬儀</dd></div>
+        <div class="footer__detail"><dt class="footer__term">電話番号</dt><dd class="footer__description"><a class="footer__text-link" href="tel:0427034986">042-703-4986</a></dd></div>
+        <div class="footer__detail"><dt class="footer__term">所在地</dt><dd class="footer__description">〒252-0235<br />神奈川県相模原市中央区相生4-3-14</dd></div>
+        <div class="footer__detail"><dt class="footer__term">営業時間</dt><dd class="footer__description">24時間365日対応</dd></div>
+        <div class="footer__detail"><dt class="footer__term">定休日</dt><dd class="footer__description">なし（年中無休）</dd></div>
+      </dl>
+    </div>
+
+    <nav class="footer__nav" aria-label="フッターメニュー">
+      <h2 class="footer__heading">メニュー</h2>
+      <a class="footer__nav-link" href="#promise">私たちの想い</a>
+      <a class="footer__nav-link" href="#plans">火葬プラン</a>
+      <a class="footer__nav-link" href="#flow">お見送りの流れ</a>
+      <a class="footer__nav-link" href="#faq">よくあるご質問</a>
+      <a class="footer__nav-link" href="#contact">ご相談・ご予約</a>
+    </nav>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="container footer__bottom-inner">
+      <p class="footer__copyright">© Pet Ceremony Familia</p>
+      <a class="footer__corporate" href="https://pet-ceremony-familia.com/" target="_blank" rel="noopener noreferrer">コーポレートサイト</a>
+    </div>
+  </div>
+</footer>
+
+<div class="mobile-contact" aria-label="お問い合わせ">
+  <a class="mobile-contact__link mobile-contact__link--phone" href="tel:0427034986"><Icon name="phone" class="mobile-contact__icon" /><span class="mobile-contact__text">電話する</span></a>
+  <a class="mobile-contact__link mobile-contact__link--line" href="https://line.me/R/ti/p/@971qlchl?ts=09091308&oat_content=url" target="_blank" rel="noopener noreferrer"><Icon name="line" class="mobile-contact__icon" /><span class="mobile-contact__text">LINEで相談</span></a>
+</div>

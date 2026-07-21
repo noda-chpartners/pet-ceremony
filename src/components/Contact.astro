@@ -1,0 +1,25 @@
+---
+import Icon from './Icon.astro';
+---
+
+<section class="contact section" id="contact">
+  <div class="contact__ornament contact__ornament--left" aria-hidden="true"></div>
+  <div class="contact__ornament contact__ornament--right" aria-hidden="true"></div>
+  <div class="container contact__inner" data-reveal>
+    <p class="contact__kicker">24 hours, 365 days</p>
+    <h2 class="contact__title">まずは、ご相談ください。</h2>
+    <p class="contact__lead">ご相談・ご予約は24時間365日受け付けています。<br class="contact__break" />深夜・早朝も、落ち着いてお電話ください。</p>
+    <div class="contact__actions">
+      <a class="contact__phone" href="tel:0427034986">
+        <Icon name="phone" class="contact__phone-icon" />
+        <span class="contact__phone-copy">
+          <span class="contact__phone-label">24時間365日受付</span>
+          <strong class="contact__phone-number">042-703-4986</strong>
+        </span>
+      </a>
+      <a class="button contact__line" href="https://line.me/R/ti/p/@971qlchl?ts=09091308&oat_content=url" target="_blank" rel="noopener noreferrer">
+        <Icon name="line" class="button__icon" />LINEで相談する
+      </a>
+    </div>
+  </div>
+</section>

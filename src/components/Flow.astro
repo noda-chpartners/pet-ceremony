@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets';
+import familyImage from '../assets/images/family-with-dog.jpg';
+
+const steps = [
+  { number: '01', title: 'ご相談・ご予約', text: 'まずはお電話またはLINEでご連絡ください。24時間365日受け付けています。' },
+  { number: '02', title: 'ご自宅へ訪問', text: 'ご予約いただいた日時に、ペット火葬車でご自宅へ伺います。' },
+  { number: '03', title: '内容のご説明', text: 'ご希望のプランを確認し、担当スタッフが火葬の流れをご説明します。' },
+  { number: '04', title: 'お見送り・ご返骨', text: 'プランに沿って丁寧に火葬を執り行い、ご返骨のあるプランはお骨をお返しします。' },
+];
+---
+
+<section class="flow section" id="flow">
+  <div class="container flow__heading" data-reveal>
+    <p class="section-kicker">How It Works</p>
+    <h2 class="section-heading">お見送りの流れ</h2>
+    <p class="flow__heading-text">慣れないことばかりでも大丈夫です。ご相談からお見送りまで、担当スタッフが丁寧にお手伝いします。</p>
+  </div>
+
+  <div class="flow__body">
+    <div class="flow__image-wrap" data-reveal>
+      <Image class="flow__image" src={familyImage} alt="愛犬を囲む家族" widths={[640, 960, 1200]} sizes="(max-width: 900px) 100vw, 48vw" />
+      <div class="flow__image-caption">
+        <span class="flow__caption-label">At your home</span>
+        <span class="flow__caption-text">慣れ親しんだ場所で<br />穏やかなお別れを</span>
+      </div>
+    </div>
+
+    <ol class="flow__steps">
+      {steps.map((step) => (
+        <li class="flow-step" data-reveal>
+          <span class="flow-step__number">{step.number}</span>
+          <div class="flow-step__copy">
+            <h3 class="flow-step__title">{step.title}</h3>
+            <p class="flow-step__text">{step.text}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

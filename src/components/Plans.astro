@@ -1,0 +1,70 @@
+---
+import Icon from './Icon.astro';
+
+const plans = [
+  {
+    number: '01',
+    name: '合同火葬',
+    price: '6,600',
+    featured: false,
+    description: 'ペットちゃんをお預かりし、ほかのペットちゃんと一緒に火葬します。ご返骨はございません。',
+    notes: ['ご返骨なし', '合同慰霊碑または海洋散骨'],
+  },
+  {
+    number: '02',
+    name: '個別火葬',
+    price: '8,800',
+    featured: false,
+    description: 'ペットちゃんをお預かりし、一体ずつ丁寧に個別で火葬します。ご返骨は「あり・なし」からお選びいただけます。',
+    notes: ['一体ずつ個別火葬', 'ご返骨あり・なしを選択'],
+  },
+  {
+    number: '03',
+    name: '立会火葬',
+    price: '16,500',
+    featured: true,
+    description: '火葬前のセレモニーにご家族で参加し、最後のお別れからお骨上げまでお見送りいただけます。',
+    notes: ['お別れセレモニー', 'お骨上げ・ご返骨あり'],
+  },
+  {
+    number: '04',
+    name: 'ファミリア',
+    price: '19,800',
+    featured: false,
+    description: '立会火葬を基本に、「想いをカタチにしたお見送り」をより深く丁寧にお手伝いする特別なプランです。',
+    notes: ['立会火葬を基本', '想いを形に残すお見送り'],
+  },
+];
+---
+
+<section class="plans section" id="plans">
+  <div class="container">
+    <div class="plans__heading" data-reveal>
+      <div class="plans__heading-copy">
+        <p class="section-kicker">Ceremony Plans</p>
+        <h2 class="section-heading">4つのお見送り</h2>
+      </div>
+      <p class="plans__heading-note">すべて税込価格です。料金はペットちゃんの体重や種類、内容により異なります。詳しくはお電話でご相談ください。</p>
+    </div>
+
+    <div class="plans__grid">
+      {plans.map((plan) => (
+        <article class:list={['plan-card', { 'plan-card--featured': plan.featured }]} data-reveal>
+          <div class="plan-card__top">
+            <span class="plan-card__number">PLAN {plan.number}</span>
+            {plan.featured && <span class="plan-card__badge">ご家族で立会い</span>}
+          </div>
+          <h3 class="plan-card__name">{plan.name}</h3>
+          <p class="plan-card__price"><strong class="plan-card__price-number">{plan.price}</strong><span class="plan-card__price-unit">円（税込）〜</span></p>
+          <p class="plan-card__description">{plan.description}</p>
+          <ul class="plan-card__notes">
+            {plan.notes.map((note) => <li class="plan-card__note"><span class="plan-card__check" aria-hidden="true"></span>{note}</li>)}
+          </ul>
+          <a class="plan-card__link" href="tel:0427034986">
+            このプランを電話で相談<Icon name="arrow" class="plan-card__arrow" />
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

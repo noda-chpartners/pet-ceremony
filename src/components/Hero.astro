@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets';
+import heroImage from '../assets/images/hero-family-dog.webp';
+import Icon from './Icon.astro';
+---
+
+<section class="hero" id="top">
+  <div class="hero__grain" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    <div class="hero__copy" data-hero-copy>
+      <p class="hero__eyebrow">訪問ペット火葬・葬儀／神奈川県相模原市</p>
+      <h1 class="hero__title">
+        <span class="hero__title-line">いつもの場所で、</span>
+        <span class="hero__title-line hero__title-line--indent">ありがとうを。</span>
+      </h1>
+      <p class="hero__lead">大切な家族とのお別れを、ご自宅で。<br class="hero__lead-break" />心を込めてお手伝いします。</p>
+      <div class="hero__actions">
+        <a class="button hero__phone-button" href="tel:0427034986">
+          <Icon name="phone" class="button__icon" />
+          <span class="hero__phone-text"><span class="hero__phone-label">今すぐ電話で相談</span><span class="hero__phone-number">042-703-4986</span></span>
+        </a>
+        <a class="button button--outline" href="https://line.me/R/ti/p/@971qlchl?ts=09091308&oat_content=url" target="_blank" rel="noopener noreferrer">
+          <Icon name="line" class="button__icon" />LINEで相談
+        </a>
+      </div>
+    </div>
+
+    <div class="hero__visual" data-hero-visual>
+      <div class="hero__arch">
+        <Image class="hero__image" src={heroImage} alt="家族と一緒に自宅でくつろぐ犬" widths={[600, 900, 1200]} sizes="(max-width: 767px) 100vw, 50vw" loading="eager" />
+      </div>
+      <svg class="hero__line-art" viewBox="0 0 130 120" aria-hidden="true">
+        <path d="M8 109C29 84 28 51 50 32c16-14 39-18 64-20M38 77c-14-7-23-20-26-38 18 2 31 12 38 28M71 45c6 15 18 25 36 31 5-16 1-31-11-44" />
+      </svg>
+    </div>
+  </div>
+  <a class="hero__scroll" href="#promise" aria-label="私たちの想いへ移動">
+    <span class="hero__scroll-label">Scroll</span>
+    <span class="hero__scroll-line"></span>
+  </a>
+</section>

@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Promise from '../components/Promise.astro';
+import NatureDivider from '../components/NatureDivider.astro';
+import SoftDivider from '../components/SoftDivider.astro';
+import Features from '../components/Features.astro';
+import Plans from '../components/Plans.astro';
+import Flow from '../components/Flow.astro';
+import Faq from '../components/Faq.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/home.scss';
+
+const title = '相模原市の訪問ペット火葬・葬儀｜ペットセレモニーファミリア';
+const description = '相模原市を中心に24時間365日対応する訪問ペット火葬・葬儀。大切な家族とのお別れを、慣れ親しんだご自宅で心を込めてお手伝いします。';
+---
+
+<BaseLayout title={title} description={description}>
+  <Header />
+  <main class="main-content">
+    <Hero />
+    <SoftDivider tone="paper-white" />
+    <Promise />
+    <NatureDivider />
+    <Features />
+    <SoftDivider tone="green-cream" />
+    <Plans />
+    <SoftDivider tone="cream-paper" />
+    <Flow />
+    <SoftDivider tone="paper-white-reverse" />
+    <Faq />
+    <NatureDivider flip={true} />
+    <Contact />
+  </main>
+  <Footer />
+  <script>
+    import '../scripts/navigation.js';
+    import '../scripts/animations.js';
+  </script>
+</BaseLayout>

@@ -1,0 +1,47 @@
+---
+const faqs = [
+  {
+    question: '亡くなったら、まずどうしたらいいですか？',
+    answer: 'まずはお電話ください。24時間365日受付で、スタッフが安置方法などを丁寧にご案内します。',
+  },
+  {
+    question: '夜中や早朝でも対応してもらえますか？',
+    answer: 'はい。24時間365日対応しています。深夜・早朝も、まずはご相談ください。',
+  },
+  {
+    question: 'お骨は返してもらえますか？',
+    answer: '個別火葬はご返骨あり・なしを選択できます。立会火葬とファミリアプランはご返骨があります。合同火葬はご返骨がありません。',
+  },
+  {
+    question: '料金はどのように決まりますか？',
+    answer: 'ペットちゃんの体重や種類、ご希望のプランにより異なります。事前に内容をご説明しますので、お電話でお尋ねください。',
+  },
+];
+---
+
+<section class="faq section" id="faq">
+  <div class="container faq__inner">
+    <div class="faq__heading" data-reveal>
+      <p class="section-kicker">Frequently Asked Questions</p>
+      <h2 class="section-heading">よくあるご質問</h2>
+      <p class="faq__intro">ご不安な点や分からないことがありましたら、どんな小さなことでもお電話でお尋ねください。</p>
+      <a class="button button--outline faq__button" href="tel:0427034986">電話で相談する</a>
+    </div>
+
+    <div class="faq__list">
+      {faqs.map((faq, index) => (
+        <details class="faq-item" data-reveal open={index === 0}>
+          <summary class="faq-item__question">
+            <span class="faq-item__mark">Q</span>
+            <span class="faq-item__question-text">{faq.question}</span>
+            <span class="faq-item__toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-item__answer">
+            <span class="faq-item__mark faq-item__mark--answer">A</span>
+            <p class="faq-item__answer-text">{faq.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

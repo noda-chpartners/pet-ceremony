@@ -1,0 +1,51 @@
+---
+import { Image } from 'astro:assets';
+import staffImage from '../assets/images/staff-guidance.webp';
+import vehicleImage from '../assets/images/ceremony-vehicle.webp';
+import farewellImage from '../assets/images/family-farewell.webp';
+
+const features = [
+  {
+    number: '01',
+    title: '丁寧なご説明',
+    text: 'ご不安を残さないよう、内容や流れを一つひとつ分かりやすくご案内します。',
+    image: staffImage,
+    alt: '担当スタッフがご家族へ丁寧に説明する様子',
+  },
+  {
+    number: '02',
+    title: '心ゆくまでお別れ',
+    text: '大切な時間を急かすことなく、ご家族のペースで静かにお見送りいただけます。',
+    image: farewellImage,
+    alt: '花に囲まれたペットを家族で見送る様子',
+  },
+  {
+    number: '03',
+    title: '専用の火葬車で訪問',
+    text: 'ご自宅へ専用車で伺い、慣れ親しんだ場所でのお見送りをお手伝いします。',
+    image: vehicleImage,
+    alt: '花で飾られた移動火葬車で見送る家族',
+  },
+];
+---
+
+<section class="features section" id="features">
+  <div class="container features__heading" data-reveal>
+    <p class="section-kicker section-kicker--light">Why Familia</p>
+    <h2 class="section-heading section-heading--light">選ばれる理由</h2>
+    <p class="features__lead">大切な時間を安心してお任せいただくために、<br class="features__lead-break" />まっすぐ、誠実に向き合います。</p>
+  </div>
+
+  <div class="container features__grid">
+    {features.map((feature) => (
+      <article class="feature-card" data-reveal>
+        <div class="feature-card__image-wrap">
+          <Image class="feature-card__image" src={feature.image} alt={feature.alt} widths={[420, 640, 800]} sizes="(max-width: 767px) 88vw, 30vw" />
+          <span class="feature-card__number">{feature.number}</span>
+        </div>
+        <h3 class="feature-card__title">{feature.title}</h3>
+        <p class="feature-card__text">{feature.text}</p>
+      </article>
+    ))}
+  </div>
+</section>
