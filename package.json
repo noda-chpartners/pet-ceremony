@@ -13,6 +13,7 @@
     "@astrojs/check": "latest",
     "astro": "latest",
     "gsap": "latest",
+    "lenis": "^1.3.25",
     "sass": "latest",
     "typescript": "latest"
   }

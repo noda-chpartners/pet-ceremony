@@ -44,7 +44,7 @@ const navItems = [
     </button>
   </div>
 
-  <div class="mobile-menu" id="mobile-menu" aria-hidden="true" data-mobile-menu>
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true" data-mobile-menu data-lenis-prevent>
     <nav class="mobile-menu__nav" aria-label="モバイルメニュー">
       {navItems.map((item, index) => (
         <a class="mobile-menu__link" href={item.href} data-menu-link>

@@ -12,6 +12,15 @@ const setMenuState = (isOpen) => {
   menuButton.classList.toggle('is-active', isOpen);
   mobileMenu.classList.toggle('is-open', isOpen);
   document.body.classList.toggle('is-menu-open', isOpen);
+
+  // メニュー表示中は背面のスクロール（Lenis）を止める
+  if (window.__lenis) {
+    if (isOpen) {
+      window.__lenis.stop();
+    } else {
+      window.__lenis.start();
+    }
+  }
 };
 
 menuButton?.addEventListener('click', () => {
