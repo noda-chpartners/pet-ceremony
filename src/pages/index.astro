@@ -2,39 +2,59 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
-import Promise from '../components/Promise.astro';
-import NatureDivider from '../components/NatureDivider.astro';
-import SoftDivider from '../components/SoftDivider.astro';
-import Features from '../components/Features.astro';
+import Pricing from '../components/Pricing.astro';
+import Reasons from '../components/Reasons.astro';
+import Breeds from '../components/Breeds.astro';
 import Plans from '../components/Plans.astro';
+import Voices from '../components/Voices.astro';
 import Flow from '../components/Flow.astro';
 import Faq from '../components/Faq.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/home.scss';
 
-const title = '相模原市の訪問ペット火葬・葬儀｜ペットセレモニーファミリア';
-const description = '相模原市を中心に24時間365日対応する訪問ペット火葬・葬儀。大切な家族とのお別れを、慣れ親しんだご自宅で心を込めてお手伝いします。';
+const title = '相模原市のペット火葬・葬儀｜猫13,200円〜・24時間対応｜ペットセレモニーファミリア';
+const description =
+  '相模原市を中心に24時間365日対応する訪問ペット火葬・葬儀。猫・チワワなど小型犬13,200円〜、ミニチュアダックス15,400円〜。Google口コミ評価4.9、神奈川県獣医師会報掲載。骨壺代込み・追加請求なしの明朗会計で、ご自宅でのお見送りを丁寧にお手伝いします。';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'ペットセレモニーファミリア 相模原店',
+  description,
+  telephone: '+81-120-992-230',
+  address: {
+    '@type': 'PostalAddress',
+    postalCode: '252-0235',
+    addressRegion: '神奈川県',
+    addressLocality: '相模原市中央区',
+    streetAddress: '相生4-3-14 1F',
+  },
+  openingHours: 'Mo-Su 00:00-24:00',
+  priceRange: '6,600円〜',
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.9',
+    bestRating: '5',
+  },
+};
 ---
 
 <BaseLayout title={title} description={description}>
   <Header />
   <main class="main-content">
     <Hero />
-    <SoftDivider tone="paper-white" />
-    <Promise />
-    <NatureDivider />
-    <Features />
-    <SoftDivider tone="green-cream" />
+    <Pricing />
+    <Reasons />
+    <Breeds />
     <Plans />
-    <SoftDivider tone="cream-paper" />
+    <Voices />
     <Flow />
-    <SoftDivider tone="paper-white-reverse" />
     <Faq />
-    <NatureDivider flip={true} />
     <Contact />
   </main>
   <Footer />
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <script>
     import '../scripts/navigation.js';
     import '../scripts/animations.js';

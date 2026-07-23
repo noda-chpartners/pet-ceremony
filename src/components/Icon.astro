@@ -1,20 +1,37 @@
 ---
 interface Props {
-  name: 'phone' | 'line' | 'arrow' | 'clock' | 'home' | 'heart' | 'map' | 'instagram' | 'youtube';
+  name:
+    | 'phone'
+    | 'mail'
+    | 'line'
+    | 'arrow'
+    | 'clock'
+    | 'home'
+    | 'heart'
+    | 'map'
+    | 'star'
+    | 'check'
+    | 'paw'
+    | 'instagram'
+    | 'youtube';
   class?: string;
 }
 
 const { name, class: className = '' } = Astro.props;
 ---
 
-<svg class={className} viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<svg class={className} viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
   {name === 'phone' && <><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92Z" /></>}
+  {name === 'mail' && <><rect x="3" y="5" width="18" height="14" rx="1" /><path d="m4 7 8 6 8-6" /></>}
   {name === 'line' && <><path d="M21 11.1c0 4.15-4.03 7.52-9 7.52-.62 0-1.23-.05-1.81-.15L6.2 20.7l.88-3.29C4.61 16.08 3 13.78 3 11.1c0-4.16 4.03-7.53 9-7.53s9 3.37 9 7.53Z" /><path d="M7.5 9v4h2M11 9v4M14 13V9l3 4V9" /></>}
   {name === 'arrow' && <><path d="M5 12h14M14 7l5 5-5 5" /></>}
   {name === 'clock' && <><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></>}
   {name === 'home' && <><path d="m3 11 9-8 9 8" /><path d="M5 10v10h14V10M9 20v-6h6v6" /></>}
   {name === 'heart' && <><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z" /></>}
   {name === 'map' && <><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" /><circle cx="12" cy="10" r="2.5" /></>}
+  {name === 'star' && <><path d="m12 2.5 2.9 5.9 6.6 1-4.7 4.6 1.1 6.5-5.9-3.1-5.9 3.1 1.1-6.5L2.5 9.4l6.6-1L12 2.5Z" fill="currentColor" stroke="none" /></>}
+  {name === 'check' && <><path d="m4.5 12.5 5 5 10-11" /></>}
+  {name === 'paw' && <><ellipse cx="7" cy="8.5" rx="1.9" ry="2.5" /><ellipse cx="12" cy="6.8" rx="1.9" ry="2.5" /><ellipse cx="17" cy="8.5" rx="1.9" ry="2.5" /><path d="M12 12.2c2.6 0 5.4 2 5.4 4.6 0 1.6-1.2 2.7-2.8 2.7-1 0-1.8-.5-2.6-.5s-1.6.5-2.6.5c-1.6 0-2.8-1.1-2.8-2.7 0-2.6 2.8-4.6 5.4-4.6Z" /></>}
   {name === 'instagram' && <><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r=".7" fill="currentColor" stroke="none" /></>}
   {name === 'youtube' && <><path d="M21.2 7.2a2.7 2.7 0 0 0-1.9-1.9C17.6 4.8 12 4.8 12 4.8s-5.6 0-7.3.5a2.7 2.7 0 0 0-1.9 1.9A28 28 0 0 0 2.3 12a28 28 0 0 0 .5 4.8 2.7 2.7 0 0 0 1.9 1.9c1.7.5 7.3.5 7.3.5s5.6 0 7.3-.5a2.7 2.7 0 0 0 1.9-1.9 28 28 0 0 0 .5-4.8 28 28 0 0 0-.5-4.8Z" /><path d="m10 15 5-3-5-3v6Z" fill="currentColor" stroke="none" /></>}
 </svg>

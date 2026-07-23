@@ -1,23 +1,38 @@
 ---
+import { Image } from 'astro:assets';
+import flowersImage from '../assets/images/lp-ceremony-flowers.png';
 import Icon from './Icon.astro';
+import { site } from '../data/site';
 ---
 
-<section class="contact section" id="contact">
-  <div class="container contact__inner" data-reveal>
-    <p class="contact__kicker">24 hours, 365 days</p>
-    <h2 class="contact__title">まずは、ご相談ください。</h2>
-    <p class="contact__lead">ご相談・ご予約は24時間365日受け付けています。<br class="contact__break" />深夜・早朝も、落ち着いてお電話ください。</p>
-    <div class="contact__actions">
-      <a class="contact__phone" href="tel:0427034986">
-        <Icon name="phone" class="contact__phone-icon" />
-        <span class="contact__phone-copy">
-          <span class="contact__phone-label">24時間365日受付</span>
-          <strong class="contact__phone-number">042-703-4986</strong>
+<section class="cta section" id="contact">
+  <div class="cta__media" aria-hidden="true">
+    <Image class="cta__image" src={flowersImage} alt="" widths={[800, 1200, 1800]} sizes="100vw" />
+    <div class="cta__veil"></div>
+  </div>
+  <div class="container cta__inner" data-reveal>
+    <span class="cta__en">Contact</span>
+    <h2 class="cta__title">まずは、ご相談ください。</h2>
+    <p class="cta__lead">
+      ご相談・ご予約は24時間365日、年中無休で受け付けています。<br class="cta__break" />深夜・早朝も、落ち着いてご連絡ください。
+    </p>
+    <div class="cta__actions">
+      <a class="cta__phone" href={site.freedialTel}>
+        <Icon name="phone" class="cta__phone-icon" />
+        <span class="cta__phone-copy">
+          <span class="cta__phone-label">フリーダイヤル・通話無料</span>
+          <strong class="cta__phone-number">{site.freedial}</strong>
         </span>
       </a>
-      <a class="button contact__line" href="https://line.me/R/ti/p/@971qlchl?ts=09091308&oat_content=url" target="_blank" rel="noopener noreferrer">
-        <Icon name="line" class="button__icon" />LINEで相談する
-      </a>
+      <div class="cta__sub-actions">
+        <a class="btn btn--gold cta__button" href={site.lineUrl} target="_blank" rel="noopener noreferrer">
+          <Icon name="line" class="btn__icon" />LINEで相談する
+        </a>
+        <a class="btn btn--ghost-light cta__button" href={site.mailUrl} target="_blank" rel="noopener noreferrer">
+          <Icon name="mail" class="btn__icon" />メールで問い合わせる
+        </a>
+      </div>
     </div>
+    <p class="cta__note">当日の火葬をご希望の場合は17時までの受付となります。LINE・メールには担当スタッフが順次ご返信いたします。</p>
   </div>
 </section>

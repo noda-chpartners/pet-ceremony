@@ -1,0 +1,59 @@
+---
+import Icon from './Icon.astro';
+
+const voices = [
+  {
+    name: 'あみ さま',
+    pet: '愛犬のお見送り',
+    text: '初めてのお別れで、亡くなってからGoogleで調べてファミリアさんを見つけました。早朝にお電話をしたにもかかわらず、あたたかいご対応をしていただき、当日もすべて丁寧なご対応をしていただけたこと、ファミリアさんを選んで本当によかったです。',
+  },
+  {
+    name: 'n y さま',
+    pet: '愛猫（19歳）の立会火葬',
+    text: '市役所のモニターにも紹介されているファミリア様なら大丈夫だと思いお願いしました。24時間対応のお電話で何度も確認をしたり、プランを変更していただいたり大変ありがたかったです。当日も骨を一つずつ丁寧に説明していただき、安心しました。',
+  },
+  {
+    name: '橋本 さま',
+    pet: 'モルモットのお見送り',
+    text: '何度も利用させていただいています。いるだけで沢山の幸せをもらっていた子を、最後まで丁寧に見送ることができました。ファミリア様、今回もありがとうございました。',
+  },
+];
+---
+
+<section class="voices section" id="voices">
+  <div class="container">
+    <div class="sec-head sec-head--center" data-reveal>
+      <span class="sec-en">Voice</span>
+      <h2 class="sec-title">ご利用いただいたご家族の声</h2>
+      <p class="sec-lead">
+        Googleマップに実際に寄せられた口コミの一部をご紹介します。平均評価は4.9。温かな言葉の数々が、私たちの支えです。
+      </p>
+      <hr class="sec-rule" />
+    </div>
+
+    <div class="voices__score" data-reveal>
+      <span class="voices__score-value">4.9</span>
+      <span class="voices__score-stars" aria-label="5段階中4.9の評価">
+        {Array.from({ length: 5 }).map(() => <Icon name="star" class="voices__star" />)}
+      </span>
+      <span class="voices__score-label">Google口コミ 平均評価</span>
+    </div>
+
+    <div class="voices__grid">
+      {voices.map((voice) => (
+        <blockquote class="voice" data-reveal>
+          <span class="voice__stars" aria-hidden="true">
+            {Array.from({ length: 5 }).map(() => <Icon name="star" class="voice__star" />)}
+          </span>
+          <p class="voice__text">{voice.text}</p>
+          <footer class="voice__footer">
+            <cite class="voice__name">{voice.name}</cite>
+            <span class="voice__pet">{voice.pet}</span>
+          </footer>
+        </blockquote>
+      ))}
+    </div>
+
+    <p class="voices__note" data-reveal>※Googleマップに投稿された口コミより、原文を一部抜粋・要約して掲載しています。</p>
+  </div>
+</section>

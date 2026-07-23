@@ -1,0 +1,74 @@
+---
+import Icon from './Icon.astro';
+import { priceTable, planColumns, yen } from '../data/pricing';
+import { site } from '../data/site';
+---
+
+<section class="price section" id="price">
+  <div class="container">
+    <div class="sec-head" data-reveal>
+      <span class="sec-en">Price</span>
+      <h2 class="sec-title">料金のご案内</h2>
+      <p class="sec-lead">
+        猫やチワワなどの小型犬は13,200円〜、ミニチュアダックスなどは15,400円〜。すべて税込で、骨壺・骨袋の料金を含みます。表示料金以外の不当な追加請求は一切ございません。
+      </p>
+      <hr class="sec-rule" />
+    </div>
+
+    <div class="price__table-wrap" data-reveal>
+      <table class="price__table">
+        <thead>
+          <tr>
+            <th class="price__th price__th--type" scope="col">ペットの種類・体重の目安</th>
+            {planColumns.map((column) => (
+              <th class="price__th" scope="col">
+                <span class="price__th-name">{column.name}</span>
+                <span class="price__th-sub">{column.sub}</span>
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {priceTable.map((row) => (
+            <tr class="price__row">
+              <th class="price__type" scope="row">
+                <span class="price__type-label">{row.label}</span>
+                <span class="price__type-guide">{row.guide}</span>
+                {row.note && <span class="price__type-note">{row.note}</span>}
+              </th>
+              <td class="price__cell">{row.joint === null ? <span class="price__na">対応不可</span> : yen(row.joint)}</td>
+              <td class="price__cell">{yen(row.private)}</td>
+              <td class="price__cell">{yen(row.attended)}</td>
+              <td class="price__cell price__cell--familia">{yen(row.familia)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="price__notes" data-reveal>
+      <ul class="price__note-list">
+        <li>料金は目安です。ペットちゃんの体重や種類により変わる場合がございます。</li>
+        <li>火葬料金には骨壺・骨袋の料金が含まれており、別途費用をいただくことはありません。</li>
+        <li>体重23kg以上のペットちゃんは火葬炉の構造上、合同火葬を行うことができません。個別火葬でのご案内となります。</li>
+        <li>夜20時〜朝8時の火葬をご希望の場合、深夜手数料5,500円（税込）を別途頂戴いたします。</li>
+      </ul>
+      <div class="price__travel">
+        <p class="price__travel-title">ご自宅への出張費</p>
+        <p class="price__travel-main"><span class="price__travel-cond">相模原駅から30km未満</span><strong class="price__travel-free">0円</strong></p>
+        <p class="price__travel-sub">30km以上は10kmごとに往復4,400円（税込）を頂戴いたします。</p>
+      </div>
+    </div>
+
+    <div class="price__cta" data-reveal>
+      <p class="price__cta-copy">「うちの子はいくら？」——体重が分からなくても大丈夫です。お電話で丁寧にご案内いたします。</p>
+      <a class="price__cta-phone" href={site.freedialTel}>
+        <Icon name="phone" class="price__cta-icon" />
+        <span class="price__cta-phone-copy">
+          <span class="price__cta-note">通話無料・24時間365日</span>
+          <strong class="price__cta-number">{site.freedial}</strong>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>

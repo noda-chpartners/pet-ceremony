@@ -1,0 +1,91 @@
+---
+import { Image } from 'astro:assets';
+import staffCare from '../assets/images/lp-staff-care.png';
+import photoKuyoto from '../assets/images/photo-kuyoto.jpg';
+import photoTemple from '../assets/images/photo-temple.jpg';
+import photoShop from '../assets/images/photo-shop.jpg';
+import Icon from './Icon.astro';
+
+const reasons = [
+  {
+    number: '01',
+    title: 'Google口コミ評価 4.9の高い信頼',
+    text: '実際にご利用いただいたご家族から、温かな口コミを多数いただいています。「丁寧だった」「安心してお任せできた」という声が、私たちの何よりの誇りです。',
+  },
+  {
+    number: '02',
+    title: '明朗会計。不当な追加請求は一切なし',
+    text: '火葬料金には骨壺・骨袋を含み、掲載料金以外の請求はいたしません。相模原駅から30km圏内は出張費も0円です。',
+  },
+  {
+    number: '03',
+    title: '獣医師会報掲載・市役所モニター放映',
+    text: '神奈川県獣医師会が発行する「神奈川県獣医師会報」に掲載。相模原市役所のロビーモニターでも紹介動画が放映されており、地域の公的な媒体からも認知されています。',
+  },
+  {
+    number: '04',
+    title: '焦らせない、心ゆくまでのお別れ',
+    text: '火葬までの時間は、心に刻まれる大切なひととき。時間に追われることなく、最愛の子とゆっくり過ごしていただける進行をお約束します。',
+  },
+  {
+    number: '05',
+    title: '火葬後のご供養まで、ずっと安心',
+    text: '合同火葬・ご返骨なしの個別火葬では、提携寺院の供養塔（合同慰霊碑）への埋葬、または海洋散骨をお選びいただけます。お見送りの後のご供養まで責任を持ってお手伝いします。',
+  },
+];
+
+const facilities = [
+  { image: photoKuyoto, alt: '提携寺院にある供養塔（合同慰霊碑）', caption: '供養塔（合同慰霊碑）', note: '火葬後はこちらに埋葬し、ご供養いたします' },
+  { image: photoTemple, alt: '供養を行う提携寺院の御堂', caption: '提携寺院', note: '緑に囲まれた静かな環境でお眠りいただけます' },
+  { image: photoShop, alt: 'ペットセレモニーファミリア相模原店の外観', caption: '相模原店', note: '相模原市中央区相生。仏具のご相談も承ります' },
+];
+---
+
+<section class="reasons section" id="reasons">
+  <div class="container">
+    <div class="sec-head sec-head--center" data-reveal>
+      <span class="sec-en">Reason</span>
+      <h2 class="sec-title sec-title--light">ファミリアが選ばれる理由</h2>
+      <p class="sec-lead reasons__lead">
+        大切な家族のお見送りを任せていただくからこそ、<br class="reasons__lead-break" />客観的に確かめられる「信頼の根拠」をお伝えします。
+      </p>
+      <hr class="sec-rule" />
+    </div>
+
+    <div class="reasons__grid">
+      <figure class="reasons__visual" data-reveal>
+        <Image class="reasons__visual-image" src={staffCare} alt="白手袋のスタッフが白菊を丁寧に手向ける様子" widths={[520, 780, 1040]} sizes="(max-width: 900px) 100vw, 44vw" />
+        <figcaption class="reasons__visual-caption">一つひとつの所作まで、心を込めて。</figcaption>
+      </figure>
+
+      <ol class="reasons__list">
+        {reasons.map((reason) => (
+          <li class="reason" data-reveal>
+            <span class="reason__number">{reason.number}</span>
+            <div class="reason__body">
+              <h3 class="reason__title">{reason.title}</h3>
+              <p class="reason__text">{reason.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <div class="reasons__facilities" data-reveal>
+      <h3 class="reasons__facilities-title"><Icon name="paw" class="reasons__facilities-icon" />実際の施設をご覧ください</h3>
+      <div class="reasons__facilities-grid">
+        {facilities.map((facility) => (
+          <figure class="facility">
+            <div class="facility__frame">
+              <Image class="facility__image" src={facility.image} alt={facility.alt} widths={[420, 640, 900]} sizes="(max-width: 767px) 100vw, 33vw" />
+            </div>
+            <figcaption class="facility__caption">
+              <span class="facility__name">{facility.caption}</span>
+              <span class="facility__note">{facility.note}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

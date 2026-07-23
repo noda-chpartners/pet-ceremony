@@ -2,30 +2,38 @@
 import { Image } from 'astro:assets';
 import logo from '../assets/images/logo02.png';
 import Icon from './Icon.astro';
+import { site } from '../data/site';
 
 const navItems = [
-  { href: '#promise', label: '私たちの想い' },
-  { href: '#plans', label: '火葬プラン' },
-  { href: '#flow', label: 'お見送りの流れ' },
-  { href: '#faq', label: 'よくあるご質問' },
+  { href: '/#price', label: '料金のご案内' },
+  { href: '/#reasons', label: '選ばれる理由' },
+  { href: '/#plans', label: '火葬プラン' },
+  { href: '/#voices', label: 'お客様の声' },
+  { href: '/#flow', label: 'お見送りの流れ' },
+  { href: '/#faq', label: 'よくあるご質問' },
 ];
 ---
 
-<header class="header" data-header>
-  <div class="header__inner">
-    <a class="header__logo-link" href="#top" aria-label="ページ上部へ">
-      <Image class="header__logo" src={logo} alt="ペットセレモニーファミリア" width={280} loading="eager" />
+<header class="site-header" data-header>
+  <p class="site-header__bar">
+    <span class="site-header__bar-item">24時間365日受付・年中無休</span>
+    <span class="site-header__bar-item">相模原駅から30km圏内 出張費0円</span>
+    <span class="site-header__bar-item">明朗会計・追加請求なし</span>
+  </p>
+  <div class="site-header__inner">
+    <a class="site-header__logo-link" href="/#top" aria-label="ページ上部へ">
+      <Image class="site-header__logo" src={logo} alt="ペットセレモニーファミリア" width={280} loading="eager" />
     </a>
 
-    <nav class="header__nav" aria-label="メインメニュー">
-      {navItems.map((item) => <a class="header__nav-link" href={item.href}>{item.label}</a>)}
+    <nav class="site-header__nav" aria-label="メインメニュー">
+      {navItems.map((item) => <a class="site-header__nav-link" href={item.href}>{item.label}</a>)}
     </nav>
 
-    <a class="header__phone" href="tel:0427034986">
-      <Icon name="phone" class="header__phone-icon" />
-      <span class="header__phone-copy">
-        <span class="header__phone-note">24時間365日受付</span>
-        <span class="header__phone-number">042-703-4986</span>
+    <a class="site-header__phone" href={site.freedialTel}>
+      <Icon name="phone" class="site-header__phone-icon" />
+      <span class="site-header__phone-copy">
+        <span class="site-header__phone-note">通話無料・24時間受付</span>
+        <span class="site-header__phone-number">{site.freedial}</span>
       </span>
     </a>
 
@@ -40,16 +48,19 @@ const navItems = [
     <nav class="mobile-menu__nav" aria-label="モバイルメニュー">
       {navItems.map((item, index) => (
         <a class="mobile-menu__link" href={item.href} data-menu-link>
-          <span class="mobile-menu__index">0{index + 1}</span>
+          <span class="mobile-menu__index">{String(index + 1).padStart(2, '0')}</span>
           <span class="mobile-menu__label">{item.label}</span>
         </a>
       ))}
     </nav>
     <div class="mobile-menu__contact">
-      <p class="mobile-menu__note">ご相談・ご予約は24時間365日受付</p>
-      <a class="mobile-menu__phone" href="tel:0427034986">042-703-4986</a>
-      <a class="button mobile-menu__line-link" href="https://line.me/R/ti/p/@971qlchl?ts=09091308&oat_content=url" target="_blank" rel="noopener noreferrer">
-        <Icon name="line" class="button__icon" />LINEで相談する
+      <p class="mobile-menu__note">ご相談・ご予約は24時間365日受付（通話無料）</p>
+      <a class="mobile-menu__phone" href={site.freedialTel}>{site.freedial}</a>
+      <a class="btn btn--gold mobile-menu__cta" href={site.lineUrl} target="_blank" rel="noopener noreferrer">
+        <Icon name="line" class="btn__icon" />LINEで相談する
+      </a>
+      <a class="btn btn--ghost mobile-menu__cta" href={site.mailUrl} target="_blank" rel="noopener noreferrer">
+        <Icon name="mail" class="btn__icon" />メールで問い合わせる
       </a>
     </div>
   </div>

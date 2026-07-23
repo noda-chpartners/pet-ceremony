@@ -6,11 +6,23 @@ gsap.registerPlugin(ScrollTrigger);
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 if (!reducedMotion) {
+  const heroCopy = document.querySelector('[data-hero-copy]');
+  const heroVisual = document.querySelector('[data-hero-visual]');
+  const heroPrices = document.querySelector('[data-hero-prices]');
+
   const heroTimeline = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-  heroTimeline
-    .from('[data-hero-copy] > *', { y: 34, opacity: 0, duration: 0.9, stagger: 0.1 })
-    .from('[data-hero-visual]', { x: 45, opacity: 0, duration: 1.1 }, '-=0.75');
+  if (heroCopy) {
+    heroTimeline.from(heroCopy.children, { y: 30, opacity: 0, duration: 0.9, stagger: 0.09 });
+  }
+
+  if (heroVisual) {
+    heroTimeline.from(heroVisual, { x: 40, opacity: 0, duration: 1 }, '-=0.7');
+  }
+
+  if (heroPrices) {
+    heroTimeline.from(heroPrices, { y: 24, opacity: 0, duration: 0.8 }, '-=0.5');
+  }
 
   gsap.utils.toArray('[data-reveal]').forEach((element) => {
     gsap.to(element, {
@@ -24,17 +36,6 @@ if (!reducedMotion) {
         once: true,
       },
     });
-  });
-
-  gsap.to('.hero__image', {
-    yPercent: 8,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.hero',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: true,
-    },
   });
 } else {
   gsap.set('[data-reveal]', { clearProps: 'all' });

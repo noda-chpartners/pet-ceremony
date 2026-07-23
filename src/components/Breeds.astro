@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets';
+import chihuahuaImage from '../assets/images/lp-breed-chihuahua.png';
+import dachshundImage from '../assets/images/lp-breed-dachshund.png';
+import catImage from '../assets/images/lp-breed-cat.png';
+import Icon from './Icon.astro';
+
+const breeds = [
+  {
+    href: '/chihuahua/',
+    image: chihuahuaImage,
+    alt: 'クッションの上に座るチワワ',
+    name: 'チワワの飼い主さまへ',
+    price: '13,200円〜',
+    text: '小さな身体のチワワちゃんに合わせた火葬の進め方と料金を、専用ページでご案内しています。',
+  },
+  {
+    href: '/dachshund/',
+    image: dachshundImage,
+    alt: 'ブランケットの上でくつろぐミニチュアダックスフンド',
+    name: 'ダックスの飼い主さまへ',
+    price: '13,200円〜',
+    text: 'ミニチュアダックス・カニンヘンダックスちゃんの体格に応じたプランを専用ページでご案内しています。',
+  },
+  {
+    href: '/cat/',
+    image: catImage,
+    alt: 'クッションの上に座る猫',
+    name: '猫の飼い主さまへ',
+    price: '13,200円〜',
+    text: '猫ちゃんのお見送りに寄り添う流れと料金を、専用ページで詳しくご案内しています。',
+  },
+];
+---
+
+<section class="breeds section" id="breeds">
+  <div class="container">
+    <div class="sec-head sec-head--center" data-reveal>
+      <span class="sec-en">For Your Family</span>
+      <h2 class="sec-title">「うちの子」に合わせたご案内</h2>
+      <p class="sec-lead">
+        身体の大きさも、性格も、思い出も、一頭一頭違うから。種類ごとの専用ページで、その子に合ったお見送りをご提案します。
+      </p>
+      <hr class="sec-rule" />
+    </div>
+
+    <div class="breeds__grid">
+      {breeds.map((breed) => (
+        <a class="breed-card" href={breed.href} data-reveal>
+          <div class="breed-card__frame">
+            <Image class="breed-card__image" src={breed.image} alt={breed.alt} widths={[420, 640, 900]} sizes="(max-width: 767px) 100vw, 33vw" />
+          </div>
+          <div class="breed-card__body">
+            <h3 class="breed-card__name">{breed.name}</h3>
+            <p class="breed-card__price">火葬料金 <strong>{breed.price}</strong><span class="breed-card__tax">（税込）</span></p>
+            <p class="breed-card__text">{breed.text}</p>
+            <span class="breed-card__link">専用ページを見る<Icon name="arrow" class="breed-card__arrow" /></span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

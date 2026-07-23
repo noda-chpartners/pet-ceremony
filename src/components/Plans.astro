@@ -1,70 +1,114 @@
 ---
+import { Image } from 'astro:assets';
+import familiaItems from '../assets/images/lp-familia-items.png';
 import Icon from './Icon.astro';
+import { site } from '../data/site';
 
 const plans = [
   {
     number: '01',
     name: '合同火葬',
     price: '6,600',
-    featured: false,
-    description: 'ペットちゃんをお預かりし、ほかのペットちゃんと一緒に火葬します。ご返骨はございません。',
-    notes: ['ご返骨なし', '合同慰霊碑または海洋散骨'],
+    returnBone: 'ご返骨なし',
+    description:
+      'ペットちゃんをお預かりし、ほかのペットちゃんと一緒に合同で火葬を行います。火葬後は提携寺院の供養塔（合同慰霊碑）への埋葬、または海洋散骨をお選びいただけます。',
+    notes: ['供養塔への埋葬または海洋散骨', '費用を抑えたい方に'],
   },
   {
     number: '02',
     name: '個別火葬',
     price: '8,800',
-    featured: false,
-    description: 'ペットちゃんをお預かりし、一体ずつ丁寧に個別で火葬します。ご返骨は「あり・なし」からお選びいただけます。',
-    notes: ['一体ずつ個別火葬', 'ご返骨あり・なしを選択'],
+    returnBone: 'ご返骨あり・なしを選択',
+    description:
+      '一体ずつ丁寧に個別で火葬を行います。ご返骨は「あり・なし」からお選びいただけます。ご返骨なしの場合は供養塔への埋葬または海洋散骨をお選びいただけます。',
+    notes: ['一体ずつ丁寧に個別火葬', 'お骨を手元に残したい方に'],
   },
   {
     number: '03',
     name: '立会火葬',
     price: '16,500',
-    featured: true,
-    description: '火葬前のセレモニーにご家族で参加し、最後のお別れからお骨上げまでお見送りいただけます。',
-    notes: ['お別れセレモニー', 'お骨上げ・ご返骨あり'],
+    returnBone: 'ご返骨あり',
+    description:
+      '火葬前にロウソク・お線香・お花を供えたセレモニーへご家族でご参加いただき、火を入れる瞬間までお見送りいただけます。火葬後はご家族の手でお骨上げをしていただきます。',
+    notes: ['お別れのセレモニー', 'ご家族の手でお骨上げ'],
   },
   {
     number: '04',
-    name: 'ファミリア',
+    name: 'ファミリアプラン',
     price: '19,800',
-    featured: false,
-    description: '立会火葬を基本に、「想いをカタチにしたお見送り」をより深く丁寧にお手伝いする特別なプランです。',
-    notes: ['立会火葬を基本', '想いを形に残すお見送り'],
+    returnBone: 'ご返骨あり',
+    featured: true,
+    description:
+      '立会火葬を基本に、ファミリアが大切にしている「想いをカタチにしたお見送り」をより深く丁寧にお手伝いする特別なプランです。',
+    notes: ['立会火葬のすべての内容', '想いを形に残すお見送りの品'],
   },
+];
+
+const familiaFeatures = [
+  { name: '念珠', text: '最後の節目に、想いを込めて手を合わせるために。' },
+  { name: 'お見送りセット', text: '昔ながらの旅立ちの意味を大切にした支度の品。' },
+  { name: 'おくるみ', text: '穏やかな時間を過ごすための、やわらかな白い布。' },
+  { name: '足跡スタンプキット', text: '肉球の形を粘土に残す、世界にひとつの形見。' },
+  { name: '骨壺用乾燥剤（珪藻土）', text: '湿気からお骨を守り、良い状態で保つための配慮。' },
 ];
 ---
 
 <section class="plans section" id="plans">
   <div class="container">
-    <div class="plans__heading" data-reveal>
-      <div class="plans__heading-copy">
-        <p class="section-kicker">Ceremony Plans</p>
-        <h2 class="section-heading">4つのお見送り</h2>
-      </div>
-      <p class="plans__heading-note">すべて税込価格です。料金はペットちゃんの体重や種類、内容により異なります。詳しくはお電話でご相談ください。</p>
+    <div class="sec-head" data-reveal>
+      <span class="sec-en">Plan</span>
+      <h2 class="sec-title">選べる4つの火葬プラン</h2>
+      <p class="sec-lead">
+        ご家族の想いとご予算に合わせて、4つのプランをご用意しています。どのプランでも、お預かりからお見送りまで専門スタッフが心を込めて執り行います。
+      </p>
+      <hr class="sec-rule" />
     </div>
 
     <div class="plans__grid">
       {plans.map((plan) => (
-        <article class:list={['plan-card', { 'plan-card--featured': plan.featured }]} data-reveal>
-          <div class="plan-card__top">
-            <span class="plan-card__number">PLAN {plan.number}</span>
-            {plan.featured && <span class="plan-card__badge">ご家族で立会い</span>}
+        <article class:list={['plan', { 'plan--featured': plan.featured }]} data-reveal>
+          <div class="plan__head">
+            <span class="plan__number">Plan {plan.number}</span>
+            {plan.featured && <span class="plan__badge">いちばん選ばれています</span>}
           </div>
-          <h3 class="plan-card__name">{plan.name}</h3>
-          <p class="plan-card__price"><strong class="plan-card__price-number">{plan.price}</strong><span class="plan-card__price-unit">円（税込）〜</span></p>
-          <p class="plan-card__description">{plan.description}</p>
-          <ul class="plan-card__notes">
-            {plan.notes.map((note) => <li class="plan-card__note"><span class="plan-card__check" aria-hidden="true"></span>{note}</li>)}
+          <h3 class="plan__name">{plan.name}</h3>
+          <p class="plan__return">{plan.returnBone}</p>
+          <p class="plan__price"><strong class="plan__price-number">{plan.price}</strong><span class="plan__price-unit">円（税込）〜</span></p>
+          <p class="plan__description">{plan.description}</p>
+          <ul class="plan__notes">
+            {plan.notes.map((note) => (
+              <li class="plan__note"><Icon name="check" class="plan__check" />{note}</li>
+            ))}
           </ul>
-          <a class="plan-card__link" href="tel:0427034986">
-            このプランを電話で相談<Icon name="arrow" class="plan-card__arrow" />
-          </a>
         </article>
       ))}
+    </div>
+
+    <div class="familia" data-reveal>
+      <div class="familia__visual">
+        <Image class="familia__image" src={familiaItems} alt="念珠・おくるみ・足跡スタンプなどファミリアプランのお見送りの品" widths={[520, 780, 1040]} sizes="(max-width: 900px) 100vw, 46vw" />
+      </div>
+      <div class="familia__body">
+        <span class="familia__en">Familia Plan</span>
+        <h3 class="familia__title">ファミリアプランという、<br />いちばん丁寧なお見送り。</h3>
+        <p class="familia__text">
+          「ちゃんとしてあげたい」——その気持ちに、私たちは静かに寄り添います。最期の時間を家族としてきちんと過ごしたい方、後悔のないお別れをしたい方に選ばれている、当店だけの特別なプランです。
+        </p>
+        <dl class="familia__features">
+          {familiaFeatures.map((feature) => (
+            <div class="familia__feature">
+              <dt class="familia__feature-name">{feature.name}</dt>
+              <dd class="familia__feature-text">{feature.text}</dd>
+            </div>
+          ))}
+        </dl>
+        <p class="familia__note">
+          ※お花やご飯のご用意はございませんが、ご家族様が選ばれたものを一緒にお入れいただけます。※小さなペットちゃんは足跡の採取が難しいため、足跡スタンプの対象外となる場合があります。
+        </p>
+        <a class="btn familia__cta" href={site.freedialTel}>
+          <Icon name="phone" class="btn__icon" />ファミリアプランを電話で相談する
+        </a>
+      </div>
     </div>
   </div>
 </section>
